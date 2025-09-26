@@ -40,7 +40,7 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
       ></div>
 
       {/* 车票信息 */}
-      <div className="absolute inset-0 text-lg font-['黑体'] px-8 pt-4 text-black max-w-[100%] overflow-hidden">
+      <div className="absolute inset-0 text-lg font-['黑体'] px-4 pr-8 pt-4 text-black max-w-[100%] overflow-hidden">
         {/* 1. 车票编号和检票口 */}
         <div className="flex justify-between items-center ml-4 mr-6 max-w-[100%] overflow-hidden">
           <div className="font-bold text-[26px] text-red-600">
@@ -55,7 +55,7 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
         </div>
 
         {/* 2. 车站信息和车次 */}
-        <div className="flex items-center justify-between ml-4 mr-6 max-w-[100%] overflow-hidden">
+        <div className="flex justify-between pl-4 ml-4 mr-6 max-w-[100%] overflow-hidden">
           {/* 起点站 */}
           <div className=" text-center">
             <div className="text-[30px] min-w-[100px] font-bold flex items-center">
@@ -73,7 +73,7 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
           {/* 车次号和箭头 */}
           <div className="flex flex-col items-center mx-2 max-w-[100px]">
             <div className="text-[30px] font-bold">{data.trainNumber}</div>
-            <div className="w-[90px] flex justify-center mt-1">
+            <div className="w-[90px] flex justify-center">
               <svg
                 width="90"
                 height="5"
@@ -122,23 +122,23 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
               {data.date &&
                 data.date.split("年").map((part: string, i: number) =>
                   i === 0 ? (
-                    <span key={i} className="text-[20px]">
+                    <span key={i} className="text-[22px]">
                       {part}
                     </span>
                   ) : (
                     part.split("月").map((p: string, j: number) =>
                       j === 0 ? (
                         <React.Fragment key={j}>
-                          <span className="text-lg mx-1">年</span>
-                          <span className="text-[20px]">{p}</span>
+                          <span className="text-sm mx-1">年</span>
+                          <span className="text-[22px]">{p}</span>
                         </React.Fragment>
                       ) : (
                         p.split("日").map((d: string, k: number) =>
                           k === 0 ? (
                             <React.Fragment key={k}>
-                              <span className="text-lg mx-1">月</span>
-                              <span className="text-[20px]">{d}</span>
-                              <span className="text-lg mx-1">日</span>
+                              <span className="text-sm mx-1">月</span>
+                              <span className="text-[22px]">{d}</span>
+                              <span className="text-sm mx-1">日</span>
                             </React.Fragment>
                           ) : null
                         )
@@ -148,17 +148,17 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
                 )}
               <span className="text-base">
                 {" "}
-                <span className="text-[20px]">{data.time}</span>
+                <span className="text-[22px]">{data.time}</span>
               </span>
-              <span className="text-lg ml-1">开</span>
+              <span className="text-sm ml-1">开</span>
             </div>
           </div>
           <div className="text-right">
             <div className="text-base">
-              <span className="text-[20px]">{data.carriage}</span>
-              <span className="text-lg">车</span>
-              <span className="text-[20px]">{data.seat}</span>
-              <span className="text-lg">号</span>
+              <span className="text-[22px]">{data.carriage}</span>
+              <span className="text-sm">车</span>
+              <span className="text-[22px]">{data.seat}</span>
+              <span className="text-sm">号</span>
             </div>
           </div>
         </div>
@@ -166,22 +166,23 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
         {/* 4. 车票金额和席位 */}
         <div className="flex justify-between items-center ml-4 mr-6 max-w-[100%] overflow-hidden">
           <div className="text-xl">
-            ¥<span className="ml-1 font-bold text-[20px]">{data.price}</span>
-            <span className="text-lg font-bold">元</span>
+            ¥<span className="ml-1 font-bold text-[22px]">{data.price}</span>
+            <span className="text-sm font-bold">元</span>
           </div>
-          <div className="text-base font-bold">{data.seatType}</div>
+          <div className="text-base font-bold text-xl">{data.seatType}</div>
         </div>
         {/* 5. 票的用途 */}
         <div className="mt-2 ml-4 mr-6 font-bold max-w-[100%] overflow-hidden">
-          <div className="inline-block text-black text-base text-lg rounded-sm">
+          <div className="inline-block text-black text-base text-xl rounded-sm">
             {data.ticketType}
           </div>
         </div>
 
         {/* 6. 身份证号、姓名 */}
         <div className="flex items-center justify-between ml-4 mr-6 font-bold max-w-[100%] overflow-hidden">
-          <div className="text-base text-lg">
-            {maskIdCard(data.idCard)} {data.passengerName}
+          <div className="text-base text-[22px]">
+            {maskIdCard(data.idCard)}
+            <span className="text-xl">{" " + data.passengerName}</span>
           </div>
         </div>
 
@@ -196,10 +197,10 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
           </div>
         </div>
         {/* 7. 底部信息（虚线边框） */}
-        <div className="relative w-[calc(100%-160px)] text-center ml-4">
+        <div className="relative w-[calc(100%-180px)] text-center ml-4 pl-4">
           {/* 使用 SVG 绘制虚线边框 */}
           <svg
-            className="absolute top-0 left-0 w-full h-full"
+            className="absolute top-0 left-5 w-full h-full"
             xmlns="http://www.w3.org/2000/svg"
             width="100%"
             height="100%"
@@ -240,13 +241,13 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
           </svg>
 
           {/* 这是你的内容 */}
-          <div className="relative z-10">
+          <div className="relative z-10 left-5">
             <div className="text-sm">{data.notes1}</div>
             <div className="text-sm">{data.notes2}</div>
           </div>
         </div>
         {/* 8. 21位编号和售票方式 */}
-        <div className="text-lg my-2 ml-4 mr-6 font-bold max-w-[100%] overflow-hidden">
+        <div className="text-xl my-2 ml-4 mr-6 font-bold max-w-[100%] overflow-hidden">
           {data.serialNumber}
         </div>
       </div>

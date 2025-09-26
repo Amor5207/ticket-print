@@ -119,9 +119,9 @@ export default function Home() {
   // 打印入口
   const handlePrint = (type: string) => {
     if (type === "back") {
-      printComponent(<TicketBack data={ticketData} isPreview={true} />);
+      printComponent(<TicketBack data={ticketData} />);
     } else if (type === "front") {
-      printComponent(<TicketFront data={ticketData} isPreview={true} />);
+      printComponent(<TicketFront data={ticketData} />);
     }
   };
 

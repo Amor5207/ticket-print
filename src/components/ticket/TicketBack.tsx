@@ -23,19 +23,22 @@ export const TicketBack: React.FC<TicketBackProps> = ({ data }) => {
         backgroundColor: "#000000",
       }}
     >
-      <div
-        className="absolute inset-0 p-4 text-white font-['黑体']"
-        style={{ opacity: 1 }}
-      >
+      <div className="absolute inset-0 p-4 text-white font-['宋体']">
         <div className="">
-          <span className="font-bold text-xl" style={{ letterSpacing: "-2px" }}>
+          <p className="font-bold text-xl text-center my-3 font-['黑体']">
             {data.backTitle}
-          </span>
+          </p>
           {data.backParagraphs.map((para: string, index: number) => (
-            <span key={index} className="text-[11.6px] font-bold">
+            <div
+              key={index}
+              className="text-sm font-bold"
+              style={{
+                textIndent: "2em",
+              }}
+            >
               <span className="">☆</span>
               {para}
-            </span>
+            </div>
           ))}
         </div>
       </div>
