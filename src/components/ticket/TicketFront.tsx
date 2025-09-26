@@ -180,8 +180,8 @@ export const TicketFront: React.FC<TicketFrontProps> = ({ data }) => {
 
         {/* 6. 身份证号、姓名 */}
         <div className="flex items-center justify-between ml-4 mr-6 font-bold max-w-[100%] overflow-hidden">
-          <div className="text-base text-[22px]">
-            {maskIdCard(data.idCard)}
+          <div className="text-base">
+            <span className="text-[22px]">{maskIdCard(data.idCard)}</span>
             <span className="text-xl">{" " + data.passengerName}</span>
           </div>
         </div>
